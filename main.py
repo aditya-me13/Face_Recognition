@@ -1,12 +1,22 @@
-import os, sys
+import os
+import sys
 import face_recognition
 import cv2
 import numpy as np
 import math
 import logging
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='fr_logs.log', level=logging.INFO)
+# Clear the logging file before execution
+with open('fr_logs.log', 'w'):
+    pass
+
+logging.basicConfig(
+    filename='fr_logs.log',  # Log file name
+    level=logging.INFO,      # Log level
+    format='%(asctime)s %(name)s %(levelname)s %(message)s',  # Log message format
+    datefmt='%Y-%m-%d %H:%M:%S'  # Date format
+)
+logger = logging.getLogger('main.py')
 
 
 def face_conidence(face_distance, face_match_threshold=0.6):
@@ -80,7 +90,7 @@ class FaceRecognition:
                     self.face_names.append(f'{name} ({confidence})')
                     
             self.process_current_frame = not self.process_current_frame
-            ̃˜
+
             # display annotations
             for (top, right, bottom, left), name in zip(reversed(self.face_locations), reversed(self.face_names)):
                 top *= 4
