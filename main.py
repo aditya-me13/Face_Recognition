@@ -7,11 +7,11 @@ import math
 import logging
 
 # Clear the logging file before execution
-with open('fr_logs.log', 'w'):
+with open('logs.log', 'w'):
     pass
 
 logging.basicConfig(
-    filename='fr_logs.log',  # Log file name
+    filename='logs.log',  # Log file name
     level=logging.INFO,      # Log level
     format='%(asctime)s %(name)s %(levelname)s %(message)s',  # Log message format
     datefmt='%Y-%m-%d %H:%M:%S'  # Date format
