@@ -19,7 +19,7 @@ logging.basicConfig(
 logger = logging.getLogger('main.py')
 
 
-def face_conidence(face_distance, face_match_threshold=0.6):
+def face_conidence(face_distance, face_match_threshold=0.8):
     _range = (1.0 - face_match_threshold)
     linear_value = (1.0 - face_distance) / (_range * 2.0)
 
