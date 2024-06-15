@@ -63,7 +63,8 @@ class FaceRecognition:
         while True:
             # ret returns if theres is any frame to process (Bool value)
             ret, frame = video_capture.read() 
-
+            
+            # Process every alternate frame
             if self.process_current_frame:
                 small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25) # compress the frame to 0.25 to speed up processing
                 rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB) # think of a blackbox that converts to RGB format
@@ -75,7 +76,7 @@ class FaceRecognition:
                 self.face_names = []
                 for face_encoding in self.face_encodings:
                     # see if the face is a match for the known face(s)
-                    matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
+                    matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding, tolerance = 0.8)
                     name = "Unknown"
                     confidence = 'Unknown'
 
